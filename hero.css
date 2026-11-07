@@ -1,0 +1,297 @@
+:root {
+      color-scheme: dark;
+      --background: #040607;
+      --accent: #5484a5;
+      --text: #f4f5f5;
+      --muted: #c0c5ca;
+      --gutter: clamp(24px, 3vw, 74px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      min-height: 85svh;
+      display: grid;
+      align-items: start;
+      padding: clamp(30px, 4.2vh, 70px) var(--gutter) clamp(46px, 7vh, 110px);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: clamp(24px, 5vh, 76px) auto clamp(22px, 2.6vh, 40px) var(--gutter);
+      width: clamp(3px, 0.3vw, 7px);
+      border-radius: 10px;
+      background: var(--accent);
+    }
+
+    .copy {
+      position: relative;
+      width: 59%;
+      padding-left: clamp(22px, 1.85vw, 48px);
+    }
+
+    .project-name {
+      margin: 0 0 clamp(15px, 1.4vw, 34px);
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(54px, 6.2vw, 146px);
+      font-weight: 700;
+      letter-spacing: -0.067em;
+      line-height: 0.99;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 22ch;
+      font-size: clamp(32px, 3vw, 72px);
+      font-weight: 650;
+      letter-spacing: -0.056em;
+      line-height: 1.05;
+      text-wrap: balance;
+    }
+
+    .authors {
+      display: grid;
+      gap: 0.42em;
+      margin-top: clamp(26px, 2.5vw, 62px);
+      color: var(--muted);
+      font-size: clamp(16px, 1.54vw, 36px);
+      line-height: 1.35;
+    }
+
+    .authors p, .affiliations p { margin: 0; }
+
+    .author-name { white-space: nowrap; }
+
+    sup {
+      position: relative;
+      top: -0.35em;
+      vertical-align: baseline;
+      font-size: 0.65em;
+    }
+
+    .affiliations {
+      display: grid;
+      gap: 0.32em;
+      margin-top: clamp(14px, 1.3vw, 32px);
+      color: var(--muted);
+      font-size: clamp(13px, 1.04vw, 25px);
+      line-height: 1.35;
+    }
+
+    .resources {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(7px, 0.6vw, 14px);
+      margin-top: clamp(18px, 1.45vw, 36px);
+    }
+
+    .resource {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.48em;
+      min-height: 38px;
+      padding: 0.57em 0.9em;
+      border: 1px solid #666b70;
+      border-radius: 100px;
+      background: #050708;
+      color: var(--text);
+      font: 650 clamp(13px, 0.98vw, 23px)/1.15 "Segoe UI", Arial, sans-serif;
+    }
+
+    .resource svg { width: 1em; height: 1em; fill: none; stroke: currentColor; }
+
+    /* Replace the figure's placeholder with an image or a muted teaser video. */
+    .hero-media {
+      position: absolute;
+      z-index: -1;
+      inset: 0 0 0 46%;
+      display: grid;
+      place-items: center;
+      margin: 0;
+      padding: 12% 7% 5% 12%;
+      background: radial-gradient(ellipse at 72% 58%, #1b2934, #0b1116 49%, transparent 76%);
+    }
+
+    .hero-media > :is(img, video) {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: right center;
+      mask-image: linear-gradient(90deg, transparent, black 27%);
+    }
+
+    .media-placeholder {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border: 1px solid #344654;
+      background:
+        linear-gradient(145deg, transparent, #15202acc),
+        repeating-linear-gradient(0deg, transparent 0 35px, #9eb3c008 35px 36px),
+        repeating-linear-gradient(90deg, transparent 0 35px, #9eb3c008 35px 36px);
+      position: relative;
+      color: #bccbd5;
+    }
+
+    .media-placeholder::before,
+    .media-placeholder::after {
+      content: "";
+      position: absolute;
+      width: 19px;
+      height: 19px;
+      border: solid #7297b3;
+    }
+
+    .media-placeholder::before {
+      top: -1px;
+      left: -1px;
+      border-width: 2px 0 0 2px;
+    }
+
+    .media-placeholder::after {
+      right: -1px;
+      bottom: -1px;
+      border-width: 0 2px 2px 0;
+    }
+
+    .media-placeholder-content {
+      display: grid;
+      justify-items: center;
+      gap: 13px;
+      text-align: center;
+    }
+
+    .media-placeholder svg { width: 34px; height: 34px; opacity: 0.85; }
+
+    .placeholder-label {
+      font: 500 clamp(10px, 0.85vw, 19px)/1.3 Consolas, monospace;
+      letter-spacing: 0.11em;
+    }
+
+    .institutions {
+      min-height: 15svh;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      gap: clamp(14px, 3vw, 55px);
+      padding: clamp(15px, 2.5vh, 34px) var(--gutter);
+      border-top: 2px solid #34566b;
+      background: linear-gradient(110deg, #060809 32%, #151a1e 75%, #080b0d);
+    }
+
+    .logo-placeholder {
+      justify-self: center;
+      display: grid;
+      place-items: center;
+      width: min(100%, 290px);
+      min-height: clamp(42px, 7.8vh, 100px);
+      padding: 8px;
+      border: 1px dashed #64707b;
+      border-radius: 4px;
+      color: #c3c9ce;
+      text-align: center;
+    }
+
+    .resource--video {
+      border-color: #55788e;
+      background: #111d25;
+    }
+
+    .replay {
+      position: absolute;
+      right: var(--gutter);
+      bottom: clamp(20px, 3vh, 42px);
+      padding: 6px 0 6px 8px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font: 500 13px/1.3 "Segoe UI", Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    .replay:hover { color: var(--text); }
+    .replay:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .title-line { display: block; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .entrance .hero::before {
+        transform-origin: top;
+        animation: rule-in 620ms cubic-bezier(0.2, 0.75, 0.25, 1) 50ms both;
+      }
+
+      .entrance .project-name {
+        animation: name-in 460ms cubic-bezier(0.2, 0.75, 0.25, 1) 100ms both;
+      }
+
+      .entrance :is(.title-line, .authors p, .affiliations, .resources) {
+        animation: text-in 420ms cubic-bezier(0.2, 0.75, 0.25, 1) var(--enter-at) both;
+      }
+
+      .title-line:nth-child(1) { --enter-at: 290ms; }
+      .title-line:nth-child(2) { --enter-at: 405ms; }
+      .title-line:nth-child(3) { --enter-at: 520ms; }
+      .authors p:first-child { --enter-at: 725ms; }
+      .authors p:last-child { --enter-at: 815ms; }
+      .affiliations { --enter-at: 920ms; }
+      .resources { --enter-at: 1030ms; }
+
+      @keyframes rule-in {
+        from { opacity: 0; transform: scaleY(0); }
+        to { opacity: 1; transform: scaleY(1); }
+      }
+
+      @keyframes name-in {
+        from { opacity: 0; transform: translateX(-16px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+
+      @keyframes text-in {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .replay { display: none; }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        min-height: auto;
+        padding-top: 32px;
+        padding-bottom: 28px;
+        row-gap: 28px;
+      }
+      .hero::before { bottom: 29px; }
+      .replay { position: static; justify-self: end; margin-top: -17px; }
+      .copy { width: 100%; padding-left: 17px; }
+      .project-name { font-size: clamp(39px, 10vw, 74px); }
+      h1 { font-size: clamp(28px, 6.2vw, 45px); }
+      .authors { font-size: 15px; }
+      .hero-media {
+        position: relative;
+        inset: auto;
+        padding: 0;
+        margin-left: 17px;
+        aspect-ratio: 16 / 10;
+      }
+      .hero-media > :is(img, video) { mask-image: none; }
+      .institutions { min-height: 0; gap: 9px; }
+      .logo-placeholder { padding: 6px 2px; }
+      .logo-placeholder .placeholder-label { font-size: 9px; letter-spacing: 0.03em; }
+    }
