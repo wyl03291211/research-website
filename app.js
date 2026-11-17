@@ -50,8 +50,8 @@
   });
   if (project.hero.src) {
     const figure = document.querySelector(".hero-media");
-    const placeholder = figure.querySelector(".media-placeholder");
-    const media = document.createElement(project.hero.type === "video" ? "video" : "img");
+    const stillImage = figure.querySelector("img");
+    const media = project.hero.type === "video" ? document.createElement("video") : stillImage;
     if (media.tagName === "VIDEO") {
       media.muted = true;
       media.autoplay = !matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -64,11 +64,8 @@
       media.alt = project.hero.alt;
     }
     media.addEventListener("error", () => media.remove());
-    media.addEventListener(media.tagName === "VIDEO" ? "loadeddata" : "load", () => {
-      placeholder.hidden = true;
-    });
-    media.src = project.hero.src;
-    figure.append(media);
+    if (media.getAttribute("src") !== project.hero.src) media.src = project.hero.src;
+    if (media !== stillImage) stillImage.replaceWith(media);
 
     if (media.tagName === "IMG" && project.hero.motion) {
       const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
@@ -82,7 +79,6 @@
       animation.setAttribute("aria-hidden", "true");
       animation.addEventListener("playing", () => {
         if (motionPreference.matches) return;
-        placeholder.hidden = true;
         animation.classList.add("is-playing");
       });
       const showStillImage = () => animation.classList.remove("is-playing");
